@@ -1,385 +1,492 @@
 /* =====================================================
-   ESTILOS OTTOMAN EMPIRE - FIX FORZADO 360PX
+   ESTILOS OTTOMAN EMPIRE
    ===================================================== */
 
 /* 1. RESETEO Y CONFIGURACIÓN GENERAL */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Evita que los bordes y paddings sumen al ancho total */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4; 
+    padding-bottom: 0;
     color: #333;
-    overflow-x: hidden; /* PROHIBIDO EL SCROLL HORIZONTAL */
-    width: 100%;
+    /* Evita que aparezca una barra de desplazamiento horizontal cuando el carrito está oculto a la derecha */
+    overflow-x: hidden; 
 }
 
+/* Clase de utilidad para cajas genéricas */
 .box {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
 }
 
+/* Contenedor principal que centra el contenido y le da un ancho máximo */
 .container {
-    width: 100%;
+    width: 95%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 10px; /* Margen interno para que no pegue en los bordes */
 }
 
-/* =========================================
-   2. HEADER (ENCABEZADO)
-   ========================================= */
-.top-header {
-    background-color: #444444;
-    padding: 10px 0;
-    border-bottom: 2px solid #222;
-    width: 100%;
-}
-
+/* Clases de utilidad para Flexbox */
 .flex-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permitir que bajen elementos */
-    gap: 10px;
-}
-
-.logo-box {
-    width: 140px; /* Logo más pequeño */
-    height: 50px;
-}
-
-.logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.social-box {
-    width: auto;
-}
-
-.sesion-img {
-    height: 35px;
-    width: auto;
-}
-
-.search-box {
-    width: 100%; /* Ocupa todo el ancho abajo */
-    max-width: 100%;
-    height: 40px;
-    margin-top: 5px;
-    order: 3; /* Se va al final */
-    background-color: #ffffff;
-    border-radius: 20px;
-    display: flex;
-    overflow: hidden;
-}
-
-.search-box input {
-    flex-grow: 1;
-    padding: 0 15px;
-    border: none;
-    outline: none;
-    font-size: 0.9rem;
-}
-
-.search-box button {
-    background-color: #f1f1f1;
-    border: none;
-    padding: 0 15px;
-    cursor: pointer;
-}
-
-/* =========================================
-   3. NAVEGACIÓN (MENÚ DESLIZABLE)
-   ========================================= */
-.main-nav {
-    background-color: #333;
-    padding: 5px 0;
-    width: 100%;
-    overflow: hidden; /* Corta lo que se salga */
+    gap: 20px;
 }
 
 .flex-start {
     display: flex;
-    flex-wrap: nowrap !important; /* PROHIBIDO QUE SALGAN DE LÍNEA */
-    overflow-x: auto !important; /* SCROLL HORIZONTAL OBLIGATORIO */
-    gap: 8px;
-    padding: 5px 10px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Ocultar barra en Firefox */
-}
-
-.flex-start::-webkit-scrollbar {
-    display: none; /* Ocultar barra en Chrome/Safari */
-}
-
-.nav-item {
-    flex-shrink: 0; /* Evita que se aplasten */
-    height: 35px;
-    line-height: 35px;
-    padding: 0 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #333;
-    background-color: #fff;
-    border-radius: 4px;
-    border: 1px solid #e0e0e0;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.nav-item-small {
-    flex-shrink: 0;
-    width: 35px;
-    height: 35px;
-    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #333;
+    gap: 10px;
+    overflow-x: auto; /* Permite hacer scroll horizontal si el menú es muy largo */
+    padding: 5px 0;
 }
 
 /* =========================================
-   4. BANNER
+   2. ENCABEZADO (HEADER)
    ========================================= */
-.banner-container {
-    width: 100%;
-    height: 180px; /* Altura fija y pequeña para móvil */
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
+.top-header {
+    background-color: #444444;
+    padding: 15px 0;
+    border-bottom: 2px solid #222;
 }
 
-.carousel-slide {
-    display: none;
-    width: 100%;
-    height: 100%;
-}
-
-.carousel-slide.active {
-    display: block;
-}
-
-.carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    z-index: 10;
-}
-.carousel-btn.prev { left: 5px; }
-.carousel-btn.next { right: 5px; }
-
-/* =========================================
-   5. PRODUCTOS (GRILLA 2 COLUMNAS ESTRICTA)
-   ========================================= */
-.product-section {
-    margin-bottom: 30px;
-}
-
-.section-title {
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 5px 10px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #d32f2f;
-    display: inline-block;
-}
-
-.product-grid {
-    display: grid;
-    /* Forzamos 2 columnas exactas, sin importar el contenido */
-    grid-template-columns: 1fr 1fr !important; 
-    gap: 10px !important; /* Espacio pequeño entre tarjetas */
-}
-
-.product-card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    padding: 8px; /* Padding reducido */
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    overflow: hidden; /* Cortar lo que se salga */
-}
-
-.product-image {
-    width: 100%;
-    height: 120px; /* Altura de imagen pequeña */
-    margin-bottom: 8px;
+/* Contenedor del Logo */
+.logo-box {
+    width: 220px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.product-image img {
+.logo-img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
-.product-name {
-    font-size: 0.75rem; /* Texto pequeño */
-    text-align: center;
-    margin-bottom: 4px;
-    height: 32px; /* Altura fija para 2 líneas */
+/* Barra de Búsqueda */
+.search-box {
+    flex-grow: 1;
+    height: 45px;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 25px;
     overflow: hidden;
-    line-height: 1.2;
+    border: 1px solid #ccc;
+    max-width: 600px;
 }
 
-.stock {
-    font-size: 0.7rem;
-    color: #1e7e34;
-    text-align: center;
-    margin-bottom: 2px;
-}
-
-.price {
+.search-box input {
+    flex-grow: 1;
+    padding: 0 20px;
+    border: none;
+    outline: none; /* Quita el borde azul al hacer clic */
     font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
 }
 
-.brand {
+.search-box button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    color: #555;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Botón de Inicio de Sesión */
+.social-box {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s;
+}
+
+.login-btn:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+}
+
+.sesion-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* =========================================
+   3. NAVEGACIÓN (MENÚ STICKY)
+   ========================================= */
+.main-nav {
+    background-color: #333;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    position: sticky; /* Hace que el menú se quede pegado arriba al hacer scroll */
+    top: 0;
+    z-index: 900; /* Se asegura de estar por encima del contenido */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+/* Botón de la casita (Inicio) */
+a.nav-item-small {
+    text-decoration: none;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+/* Botones de las categorías */
+.nav-item {
+    height: 40px;
+    line-height: 40px; /* Ayuda a estabilizar la altura del texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: none;
+}
+
+.nav-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Botones pequeños (Casita y Carrito) */
+.nav-item-small {
+    width: 45px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    position: relative; /* Para posicionar el contador rojo */
+}
+
+/* El circulito rojo con el número de productos en el carrito */
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff0000;
+    color: white;
     font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================
+   4. BANNER PRINCIPAL (CARRUSEL)
+   ========================================= */
+.banner-container {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+.carousel-slide {
+    display: none; /* Ocultas por defecto */
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide.active {
+    display: block; /* Solo se muestra la imagen activa */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Evita que la imagen se deforme */
+}
+
+/* Botones de flecha izquierda/derecha */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-btn.prev { left: 15px; }
+.carousel-btn.next { right: 15px; }
+
+/* =========================================
+   5. SECCIONES DE PRODUCTOS (GRILLA Y TARJETAS)
+   ========================================= */
+.product-section {
+    margin-bottom: 50px;
+}
+
+/* Título de la sección (Ej. "NOVEDADES") */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border-bottom: 2px solid #d32f2f; /* Línea roja inferior */
+    background: transparent;
+}
+
+/* Cuadrícula de 5 columnas para los productos */
+.product-grid {
+    display: grid;
+    /* Crea columnas de mínimo 220px y máximo 1 fracción del espacio */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjeta individual del producto */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto al pasar el mouse por la tarjeta */
+.product-card:hover {
+    transform: translateY(-5px); /* La tarjeta sube un poco */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra */
+}
+
+/* Contenedor de la imagen del producto */
+.product-image {
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border: none;
+    background: transparent;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* La imagen se adapta sin recortarse */
+}
+
+/* Nombre del producto */
+.product-name {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.3;
+    height: 40px; /* Altura fija para que todas las tarjetas midan igual */
+    overflow: hidden;
+}
+
+/* Texto de "En Stock" / "Hay existencias" */
+.stock {
+    color: #1e7e34;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* Precio del producto */
+.price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Marca del producto */
+.brand {
+    font-size: 0.85rem;
     color: #777;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 
+/* Contenedor de los botones de compra */
 .action-buttons {
     display: flex;
-    flex-direction: column; /* Botones uno abajo del otro */
-    gap: 5px;
-    margin-top: auto;
+    gap: 8px;
+    margin-top: auto; /* Empuja los botones hacia el fondo de la tarjeta */
 }
 
+/* Estilos compartidos para los botones rojo y verde */
 .btn-red, .btn-green {
-    width: 100%;
-    padding: 6px;
-    font-size: 0.7rem;
+    flex: 1;
+    padding: 8px 5px;
     border: none;
     border-radius: 4px;
     color: white;
     font-weight: bold;
-    text-align: center;
+    font-size: 0.8rem;
     cursor: pointer;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 5px;
+    transition: opacity 0.2s;
 }
 
 .btn-red { background-color: #ff0000; }
-.btn-green { background-color: #1e7e34; }
+.btn-green { background-color: #28a745; }
+
+.btn-red:hover, .btn-green:hover {
+    opacity: 0.85;
+}
 
 /* =========================================
-   6. FOOTER (CORRECCIÓN CRÍTICA DE DESBORDE)
+   6. PIE DE PÁGINA (FOOTER)
    ========================================= */
 .main-footer {
     background-color: #f8f8f8;
     border-top: 1px solid #ddd;
-    padding: 20px 0 0 0;
-    width: 100%;
+    padding: 40px 0 0 0;
+    margin-top: 40px;
+    position: relative;
 }
 
+/* Cuadrícula del footer (4 columnas) */
 .footer-grid {
-    display: flex;
-    flex-direction: column; /* Una sola columna */
-    gap: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
+    gap: 30px;
+    padding-bottom: 30px;
 }
 
+/* Logo "100 Años" */
 .footer-logo {
     display: flex;
-    justify-content: center;
     align-items: baseline;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.num { font-size: 2.5rem; font-weight: 900; color: #d32f2f; }
-.txt { font-size: 1.8rem; font-weight: bold; color: #d32f2f; margin-left: 5px; }
+.num {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #d32f2f;
+    line-height: 1;
+}
 
-/* AQUÍ ESTABA EL ERROR GORDO: LA IMAGEN DE PAGOS */
+.txt {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #d32f2f;
+    margin-left: 5px;
+}
+
+/* Imagen de métodos de pago */
 .payment-image-container {
-    width: 100%;
-    max-width: 280px; /* Tamaño máximo permitido */
-    margin: 0 auto 15px auto;
-    overflow: hidden; /* Si la imagen es muy grande, se corta */
+    margin-bottom: 15px;
+    max-width: 250px;
 }
 
 .payment-img {
     width: 100%;
     height: auto;
-    display: block;
     object-fit: contain;
+    display: block;
 }
 
+/* Texto del candado SSL */
 .ssl-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 0.8rem;
     color: #444;
+    display: flex;
+    align-items: center;
     gap: 5px;
 }
 
-/* Listas del footer */
+/* Títulos de las columnas 2 y 3 */
 .footer-col-2 h4, .footer-col-3 h4 {
-    font-size: 1rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
     color: #333;
+    margin-bottom: 15px;
 }
 
+/* Listas del footer */
 .footer-col-2 ul, .footer-col-3 ul {
     list-style: none;
-    padding: 0;
 }
 
 .footer-col-2 ul li, .footer-col-3 ul li {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #555;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 8px;
 }
 
-/* Mapa */
+.footer-col-2 ul li i {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+/* Mapa de la columna 4 */
 .map-image-container {
-    width: 100%;
-    max-width: 300px;
-    height: 120px;
-    margin: 0 auto 10px auto;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
+    height: 120px;
 }
 
 .map-image-container img {
@@ -388,105 +495,515 @@ body {
     object-fit: cover;
 }
 
-.contact-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    margin-bottom: 5px;
+.footer-col-4 h5 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
 }
 
+.footer-col-4 p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+/* Franja inferior de Copyright */
 .footer-bottom {
     background-color: #f8f8f8;
     border-top: 1px solid #ddd;
-    padding: 15px 0;
+    padding: 20px 0;
     text-align: center;
 }
 
 .footer-bottom p {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: #444;
 }
 
-/* Botón WhatsApp Flotante */
+/* Botón flotante de WhatsApp */
 .floating-whatsapp {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    bottom: 30px;
+    right: 30px;
     background-color: #ff0000;
     color: white;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 100;
     text-decoration: none;
+    z-index: 100;
+    transition: transform 0.2s;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
 }
 
 /* =========================================
-   7. DETALLE PRODUCTO (MÓVIL)
+   7. POPUP MODAL LOGIN
    ========================================= */
-.detalle-producto {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.modal {
+    display: none; /* Oculto por defecto, el JS lo muestra */
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.6); /* Fondo oscuro semi-transparente */
+    align-items: center;
+    justify-content: center;
 }
 
-.galeria-producto, .info-producto {
+.modal-content {
+    background-color: #fefefe;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* La "X" para cerrar el modal */
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.modal-content input {
     width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* =========================================
+   8. ESTILOS DEL CARRITO (OFFCANVAS)
+   ========================================= */
+.carrito-panel {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Oculto a la derecha de la pantalla */
+    width: 100%;
+    max-width: 380px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out; /* Animación de entrada/salida */
+}
+
+/* Clase mágica que activa el JS para mostrarlo */
+.carrito-panel.abierto {
+    right: 0;
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.carrito-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cerrar-carrito {
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Lista de productos dentro del carrito */
+.carrito-items {
+    flex-grow: 1;
+    overflow-y: auto; /* Scroll si hay muchos productos */
+    padding: 20px;
+}
+
+.carrito-vacio {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+}
+
+/* Cada fila de producto en el carrito */
+.carrito-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-nombre {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.item-precio {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.item-acciones {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-subtotal {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Botón de la basurita para eliminar */
+.btn-eliminar {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-eliminar:hover {
+    transform: scale(1.2);
+}
+
+/* Parte inferior del carrito (Total y botón de WhatsApp) */
+.carrito-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+
+.carrito-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.btn-whatsapp-carrito {
+    width: 100%;
+    background-color: #1e7e34;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s;
+}
+
+.btn-whatsapp-carrito:hover {
+    background-color: #1e7e34;
+}
+
+/* Fondo oscuro detrás del carrito */
+.carrito-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2500; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.carrito-overlay.activo {
+    opacity: 1;
+    visibility: visible;
+}
+/* =========================================
+   9. ESTILOS DETALLE DEL PRODUCTO (REFACTORIZADOS)
+   ========================================= */
+.btn-volver {
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.btn-volver:hover {
+    background-color: #f0f0f0;
+}
+
+/* Layout principal del producto */
+.detalle-producto {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+/* Columna Galería */
+.galeria-producto {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
 }
 
 .galeria-principal {
     width: 100%;
     height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
     border-radius: 8px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.galeria-miniaturas {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que bajen si no caben */
+}
+
+.miniatura {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+    transition: border-color 0.2s;
+}
+
+.miniatura:hover {
+    border-color: #d32f2f;
+}
+
+/* Columna Información */
+.info-producto {
+    flex: 1;
+    min-width: 300px;
 }
 
 .detalle-titulo {
-    font-size: 1.3rem;
-    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.detalle-separador {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-bottom: 15px;
 }
 
 .detalle-precio {
-    font-size: 1.3rem;
-    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
 }
 
 .badge-vendidos {
-    display: block;
-    width: fit-content;
-    margin: 0 auto 15px auto;
-    font-size: 0.8rem;
+    background: #fff3e0;
+    color: #e65100;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.detalle-descripcion {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.detalle-color {
+    background: #e9ecef;
+    padding: 10px;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.detalle-stock {
+    color: #1e7e34;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .detalle-acciones {
-    flex-direction: column;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .btn-grande {
-    width: 100%;
-    padding: 10px;
+    padding: 10px 30px;
+    font-size: 1rem;
+    flex: 1; /* Para que ocupen el ancho disponible */
 }
+
+.detalle-lista {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 2;
+}
+
+/* Secciones Inferiores */
+.detalle-descripcion-extra {
+    margin-top: 40px;
+}
+
+.detalle-subtitulo {
+    color: #d32f2f;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.imagen-descripcion {
+    width: 100%;
+    max-width: 1300px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Tabla de especificaciones */
+.tabla-especificaciones {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.tabla-especificaciones td {
+    padding: 12px;
+    border: 1px solid #eee;
+}
+
+.tabla-especificaciones tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+
+.tabla-especificaciones td:first-child {
+    font-weight: bold;
+    width: 50%;
+}
+
 
 /* =========================================
-   8. CARRITO Y MODAL
+   10. RESPONSIVE (DISEÑO ADAPTABLE)
    ========================================= */
-.modal-content {
-    width: 95%;
-    padding: 20px;
+@media (max-width: 1200px) {
+    .product-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-.carrito-panel {
-    max-width: 100%; /* Ocupa toda la pantalla en móvil */
-    width: 100%;
+@media (max-width: 992px) {
+    .product-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-.carrito-item {
-    flex-wrap: wrap; /* Si el nombre es muy largo, baja el precio */
+@media (max-width: 768px) {
+    .flex-between { flex-wrap: wrap; justify-content: center; }
+    .search-box { order: 3; width: 100%; margin-top: 10px; max-width: 100%; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .banner-container { height: 250px; }
+    
+    /* Ajustes para la vista de detalle en tablets */
+    .detalle-producto { gap: 20px; }
+    .imagen-descripcion { height: 300px; }
+}
+
+@media (max-width: 600px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .section-title { font-size: 1rem; }
+    .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; }
+
+    /* Ajustes para la vista de detalle en celulares */
+    .detalle-producto { flex-direction: column; gap: 20px; }
+    .detalle-titulo { font-size: 1.5rem; }
+    .detalle-precio { font-size: 1.4rem; }
+    
+    .imagen-descripcion { 
+        height: auto; 
+        aspect-ratio: 1 / 1; 
+        object-fit: contain; 
+    }
+    
+    .detalle-acciones {
+        flex-direction: column;
+    }
+    
+    .btn-grande {
+        width: 100%;
+    }
 }
