@@ -1,5 +1,5 @@
 /* =====================================================
-   ESTILOS OTTOMAN EMPIRE - CORRECCIÓN FINAL MÓVIL
+   ESTILOS OTTOMAN EMPIRE - FIX FORZADO 360PX
    ===================================================== */
 
 /* 1. RESETEO Y CONFIGURACIÓN GENERAL */
@@ -12,9 +12,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4; 
-    padding-bottom: 0;
     color: #333;
-    overflow-x: hidden; /* Evita scroll horizontal global */
+    overflow-x: hidden; /* PROHIBIDO EL SCROLL HORIZONTAL */
+    width: 100%;
 }
 
 .box {
@@ -24,175 +24,127 @@ body {
 }
 
 .container {
-    width: 95%;
+    width: 100%;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 10px; /* Margen interno para que no pegue en los bordes */
 }
 
 /* =========================================
-   2. ENCABEZADO (HEADER)
+   2. HEADER (ENCABEZADO)
    ========================================= */
 .top-header {
     background-color: #444444;
-    padding: 15px 0;
+    padding: 10px 0;
     border-bottom: 2px solid #222;
+    width: 100%;
 }
 
 .flex-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    flex-wrap: wrap; /* Permitir que bajen elementos */
+    gap: 10px;
 }
 
 .logo-box {
-    width: 220px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 140px; /* Logo más pequeño */
+    height: 50px;
 }
 
 .logo-img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
 }
 
+.social-box {
+    width: auto;
+}
+
+.sesion-img {
+    height: 35px;
+    width: auto;
+}
+
 .search-box {
-    flex-grow: 1;
-    height: 45px;
-    display: flex;
+    width: 100%; /* Ocupa todo el ancho abajo */
+    max-width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    order: 3; /* Se va al final */
     background-color: #ffffff;
-    border-radius: 25px;
+    border-radius: 20px;
+    display: flex;
     overflow: hidden;
-    border: 1px solid #ccc;
-    max-width: 600px;
 }
 
 .search-box input {
     flex-grow: 1;
-    padding: 0 20px;
+    padding: 0 15px;
     border: none;
-    outline: none; 
-    font-size: 1rem;
+    outline: none;
+    font-size: 0.9rem;
 }
 
 .search-box button {
     background-color: #f1f1f1;
     border: none;
-    padding: 0 20px;
+    padding: 0 15px;
     cursor: pointer;
-    color: #555;
-    font-size: 1.1rem;
-}
-
-.social-box {
-    width: 150px;
-    height: 50px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.login-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.sesion-img {
-    height: 45px;
-    width: auto;
-    object-fit: contain;
-    border-radius: 8px;
 }
 
 /* =========================================
-   3. NAVEGACIÓN (MENÚ)
+   3. NAVEGACIÓN (MENÚ DESLIZABLE)
    ========================================= */
 .main-nav {
     background-color: #333;
     padding: 5px 0;
-    margin-bottom: 20px;
-    position: sticky; 
-    top: 0;
-    z-index: 900; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
     width: 100%;
-    overflow: hidden; /* Importante para el scroll interno */
+    overflow: hidden; /* Corta lo que se salga */
 }
 
-/* Contenedor flexible del menú */
 .flex-start {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    overflow-x: auto; /* Scroll horizontal */
+    flex-wrap: nowrap !important; /* PROHIBIDO QUE SALGAN DE LÍNEA */
+    overflow-x: auto !important; /* SCROLL HORIZONTAL OBLIGATORIO */
+    gap: 8px;
     padding: 5px 10px;
-    width: 100%;
-    /* Ocultar barra de scroll visualmente */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Ocultar barra en Firefox */
 }
-.flex-start::-webkit-scrollbar { 
-    display: none; /* Chrome/Safari */
+
+.flex-start::-webkit-scrollbar {
+    display: none; /* Ocultar barra en Chrome/Safari */
 }
 
 .nav-item {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 15px;
-    font-size: 0.9rem;
+    flex-shrink: 0; /* Evita que se aplasten */
+    height: 35px;
+    line-height: 35px;
+    padding: 0 12px;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #333;
-    white-space: nowrap;
-    cursor: pointer;
     background-color: #fff;
     border-radius: 4px;
     border: 1px solid #e0e0e0;
-    flex-shrink: 0; /* Evita que se aplasten */
-}
-
-.nav-item:hover {
-    background-color: #f0f0f0;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .nav-item-small {
-    width: 45px;
-    height: 40px;
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    color: #333;
-    cursor: pointer;
-    border: none;
-    position: relative; 
     background-color: #fff;
     border-radius: 4px;
-    flex-shrink: 0;
     text-decoration: none;
-}
-
-.cart-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: #ff0000;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: bold;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #333;
 }
 
 /* =========================================
@@ -200,180 +152,185 @@ body {
    ========================================= */
 .banner-container {
     width: 100%;
-    height: 400px;
-    margin-bottom: 30px;
+    height: 180px; /* Altura fija y pequeña para móvil */
+    margin-bottom: 20px;
     position: relative;
     overflow: hidden;
-    background-color: #f5f5f5;
 }
 
 .carousel-slide {
-    display: none; 
+    display: none;
     width: 100%;
     height: 100%;
 }
 
 .carousel-slide.active {
-    display: block; 
+    display: block;
 }
 
 .carousel-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0,0,0,0.5);
     color: white;
     border: none;
-    width: 40px;
-    height: 40px;
     border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
     z-index: 10;
 }
-
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
+.carousel-btn.prev { left: 5px; }
+.carousel-btn.next { right: 5px; }
 
 /* =========================================
-   5. PRODUCTOS
+   5. PRODUCTOS (GRILLA 2 COLUMNAS ESTRICTA)
    ========================================= */
-.product-section { margin-bottom: 50px; }
+.product-section {
+    margin-bottom: 30px;
+}
 
 .section-title {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
-    padding: 10px 15px;
-    margin-bottom: 20px;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d32f2f;
     display: inline-block;
-    border-bottom: 2px solid #d32f2f; 
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+    /* Forzamos 2 columnas exactas, sin importar el contenido */
+    grid-template-columns: 1fr 1fr !important; 
+    gap: 10px !important; /* Espacio pequeño entre tarjetas */
 }
 
 .product-card {
+    width: 100%;
     display: flex;
     flex-direction: column;
     background: #fff;
-    padding: 15px;
+    padding: 8px; /* Padding reducido */
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 6px;
+    overflow: hidden; /* Cortar lo que se salga */
 }
 
 .product-image {
     width: 100%;
-    height: 180px;
+    height: 120px; /* Altura de imagen pequeña */
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 15px;
-    background: transparent;
 }
 
 .product-image img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; 
+    object-fit: contain;
 }
 
 .product-name {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 8px;
+    font-size: 0.75rem; /* Texto pequeño */
     text-align: center;
-    height: 40px; 
+    margin-bottom: 4px;
+    height: 32px; /* Altura fija para 2 líneas */
     overflow: hidden;
+    line-height: 1.2;
 }
 
 .stock {
+    font-size: 0.7rem;
     color: #1e7e34;
-    font-weight: bold;
-    font-size: 0.85rem;
     text-align: center;
+    margin-bottom: 2px;
 }
 
 .price {
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: bold;
-    color: #333;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
 }
 
 .brand {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     color: #777;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .action-buttons {
     display: flex;
-    gap: 8px;
-    margin-top: auto; 
+    flex-direction: column; /* Botones uno abajo del otro */
+    gap: 5px;
+    margin-top: auto;
 }
 
 .btn-red, .btn-green {
-    flex: 1;
-    padding: 8px 5px;
+    width: 100%;
+    padding: 6px;
+    font-size: 0.7rem;
     border: none;
     border-radius: 4px;
     color: white;
     font-weight: bold;
-    font-size: 0.8rem;
+    text-align: center;
     cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-decoration: none;
+    align-items: center;
+    gap: 5px;
 }
 
 .btn-red { background-color: #ff0000; }
 .btn-green { background-color: #1e7e34; }
 
 /* =========================================
-   6. FOOTER (CORREGIDO)
+   6. FOOTER (CORRECCIÓN CRÍTICA DE DESBORDE)
    ========================================= */
 .main-footer {
     background-color: #f8f8f8;
     border-top: 1px solid #ddd;
-    padding: 40px 0 0 0;
-    margin-top: 40px;
+    padding: 20px 0 0 0;
+    width: 100%;
 }
 
 .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 1.5fr;
-    gap: 30px;
-    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column; /* Una sola columna */
+    gap: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    width: 100%;
 }
 
 .footer-logo {
     display: flex;
+    justify-content: center;
     align-items: baseline;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
-.num { font-size: 3.5rem; font-weight: 900; color: #d32f2f; }
-.txt { font-size: 2.5rem; font-weight: bold; color: #d32f2f; margin-left: 5px; }
+.num { font-size: 2.5rem; font-weight: 900; color: #d32f2f; }
+.txt { font-size: 1.8rem; font-weight: bold; color: #d32f2f; margin-left: 5px; }
 
-/* Contenedor de la imagen de pagos */
+/* AQUÍ ESTABA EL ERROR GORDO: LA IMAGEN DE PAGOS */
 .payment-image-container {
-    margin-bottom: 15px;
     width: 100%;
-    max-width: 250px;
-    display: block;
+    max-width: 280px; /* Tamaño máximo permitido */
+    margin: 0 auto 15px auto;
+    overflow: hidden; /* Si la imagen es muy grande, se corta */
 }
 
 .payment-img {
@@ -383,21 +340,46 @@ body {
     object-fit: contain;
 }
 
-.ssl-text { font-size: 0.8rem; color: #444; display: flex; align-items: center; gap: 5px; }
-
-.footer-col-2 h4, .footer-col-3 h4 { font-size: 1.1rem; margin-bottom: 15px; }
-.footer-col-2 ul, .footer-col-3 ul { list-style: none; }
-.footer-col-2 ul li, .footer-col-3 ul li {
-    font-size: 0.9rem; color: #555; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+.ssl-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #444;
+    gap: 5px;
 }
 
+/* Listas del footer */
+.footer-col-2 h4, .footer-col-3 h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.footer-col-2 ul, .footer-col-3 ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col-2 ul li, .footer-col-3 ul li {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mapa */
 .map-image-container {
-    margin-bottom: 15px;
+    width: 100%;
+    max-width: 300px;
+    height: 120px;
+    margin: 0 auto 10px auto;
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: hidden;
-    height: 120px;
-    width: 100%;
 }
 
 .map-image-container img {
@@ -406,161 +388,105 @@ body {
     object-fit: cover;
 }
 
-.contact-info { display: flex; align-items: center; gap: 5px; font-weight: bold; margin-bottom: 5px; }
+.contact-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 
 .footer-bottom {
     background-color: #f8f8f8;
     border-top: 1px solid #ddd;
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
 }
 
-.footer-bottom p { font-size: 0.9rem; color: #444; }
+.footer-bottom p {
+    font-size: 0.75rem;
+    color: #444;
+}
 
+/* Botón WhatsApp Flotante */
 .floating-whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    width: 50px;
+    height: 50px;
     background-color: #ff0000;
     color: white;
-    width: 60px;
-    height: 60px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    text-decoration: none;
     z-index: 100;
+    text-decoration: none;
 }
 
 /* =========================================
-   7. MODAL Y CARRITO
+   7. DETALLE PRODUCTO (MÓVIL)
    ========================================= */
-.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
-.modal-content { background-color: #fefefe; padding: 30px; border-radius: 10px; width: 90%; max-width: 400px; position: relative; }
-.close-btn { position: absolute; top: 10px; right: 20px; font-size: 28px; cursor: pointer; }
-.modal-content input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
-
-.carrito-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 380px; height: 100vh; background-color: #fff; z-index: 3000; display: flex; flex-direction: column; transition: right 0.3s ease-in-out; }
-.carrito-panel.abierto { right: 0; }
-.carrito-header { display: flex; justify-content: space-between; padding: 20px; background-color: #333; color: white; }
-.carrito-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
-.carrito-item { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0; }
-.carrito-footer { padding: 20px; background-color: #f9f9f9; }
-.carrito-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; }
-.btn-whatsapp-carrito { width: 100%; background-color: #1e7e34; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
-.carrito-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.5); z-index: 2500; opacity: 0; visibility: hidden; transition: 0.3s; }
-.carrito-overlay.activo { opacity: 1; visibility: visible; }
-
-/* =========================================
-   8. DETALLE PRODUCTO
-   ========================================= */
-.detalle-producto { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
-.galeria-producto { flex: 1; min-width: 300px; max-width: 600px; }
-.galeria-principal { width: 100%; height: auto; border-radius: 8px; border: 1px solid #eee; margin-bottom: 15px; }
-.galeria-miniaturas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-.miniatura { width: 80px; height: 80px; object-fit: contain; border: 2px solid #ddd; border-radius: 4px; cursor: pointer; }
-.info-producto { flex: 1; min-width: 300px; }
-.detalle-titulo { font-size: 2rem; margin-bottom: 15px; }
-.detalle-precio { font-size: 1.8rem; margin-bottom: 15px; }
-.badge-vendidos { background: #fff3e0; color: #e65100; padding: 5px 10px; border-radius: 4px; display: inline-block; margin-bottom: 20px; }
-.detalle-acciones { display: flex; gap: 10px; margin-bottom: 30px; }
-.btn-grande { padding: 10px 30px; font-size: 1rem; flex: 1; }
-.imagen-descripcion { width: 100%; max-width: 1300px; height: auto; border-radius: 8px; display: block; margin: 0 auto; }
-.tabla-especificaciones { width: 100%; border-collapse: collapse; }
-.tabla-especificaciones td { padding: 12px; border: 1px solid #eee; }
-.tabla-especificaciones tr:nth-child(odd) { background: #f9f9f9; }
-
-/* =========================================
-   9. RESPONSIVE (AQUÍ ESTÁ LA MAGIA)
-   ========================================= */
-
-/* Tablets */
-@media (max-width: 992px) {
-    .footer-grid { grid-template-columns: 1fr 1fr; }
+.detalle-producto {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Móviles (El fix principal) */
-@media (max-width: 768px) {
-    /* 1. Arreglar Header */
-    .top-header .flex-between {
-        flex-wrap: wrap; 
-        justify-content: center;
-    }
-    
-    .logo-box { width: 150px; height: 50px; }
-    .social-box { width: auto; }
-    
-    .search-box { 
-        order: 3; 
-        width: 100%; 
-        max-width: 100%; 
-        margin-top: 10px; 
-    }
-
-    /* 2. Arreglar Navegación (Scroll horizontal) */
-    .main-nav { padding: 8px 0; }
-    .flex-start { 
-        flex-wrap: nowrap; /* NO saltar de línea */
-        justify-content: flex-start;
-        padding: 0 10px;
-    }
-    .nav-item { flex-shrink: 0; font-size: 0.8rem; padding: 0 10px; }
-    .nav-item-small { flex-shrink: 0; }
-
-    /* 3. Arreglar Banner */
-    .banner-container { height: 200px; }
-
-    /* 4. Arreglar Footer (El desastre de los logos) */
-    .footer-grid { 
-        grid-template-columns: 1fr; 
-        text-align: center;
-        gap: 20px;
-    }
-    
-    /* Centrar todo en el footer */
-    .footer-logo, 
-    .footer-col-2 ul li, 
-    .footer-col-3 ul li, 
-    .contact-info,
-    .ssl-text {
-        justify-content: center;
-    }
-
-    /* LIMITAR EL TAMAÑO DE LOS LOGOS DE PAGO */
-    .payment-image-container {
-        margin: 0 auto 15px auto;
-        max-width: 200px; /* Tamaño máximo en móvil */
-    }
-
-    /* LIMITAR EL MAPA */
-    .map-image-container {
-        height: 150px;
-    }
-
-    /* 5. Arreglar Detalle Producto */
-    .detalle-producto { flex-direction: column; gap: 20px; }
-    .detalle-titulo { font-size: 1.5rem; text-align: center; }
-    .detalle-precio { font-size: 1.5rem; text-align: center; }
-    .detalle-acciones { flex-direction: column; }
-    .btn-grande { width: 100%; }
+.galeria-producto, .info-producto {
+    width: 100%;
 }
 
-/* Celulares Pequeños */
-@media (max-width: 600px) {
-    /* Forzar 2 columnas en productos */
-    .product-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 10px; 
-    }
-    
-    .product-card { padding: 10px; }
-    .product-image { height: 120px; }
-    
-    /* Apilar botones de compra */
-    .action-buttons { flex-direction: column; gap: 5px; }
-    
-    .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 15px; right: 15px; }
+.galeria-principal {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.detalle-titulo {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.detalle-precio {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.badge-vendidos {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 15px auto;
+    font-size: 0.8rem;
+}
+
+.detalle-acciones {
+    flex-direction: column;
+}
+
+.btn-grande {
+    width: 100%;
+    padding: 10px;
+}
+
+/* =========================================
+   8. CARRITO Y MODAL
+   ========================================= */
+.modal-content {
+    width: 95%;
+    padding: 20px;
+}
+
+.carrito-panel {
+    max-width: 100%; /* Ocupa toda la pantalla en móvil */
+    width: 100%;
+}
+
+.carrito-item {
+    flex-wrap: wrap; /* Si el nombre es muy largo, baja el precio */
 }
