@@ -1,5 +1,5 @@
 /* =====================================================
-   ESTILOS OTTOMAN EMPIRE - OPTIMIZADO Y RESPONSIVO
+   ESTILOS OTTOMAN EMPIRE - CORRECCIÓN FINAL MÓVIL
    ===================================================== */
 
 /* 1. RESETEO Y CONFIGURACIÓN GENERAL */
@@ -14,38 +14,19 @@ body {
     background-color: #f4f4f4; 
     padding-bottom: 0;
     color: #333;
-    overflow-x: hidden; 
+    overflow-x: hidden; /* Evita scroll horizontal global */
 }
 
-/* Clase de utilidad para cajas genéricas */
 .box {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
 }
 
-/* Contenedor principal */
 .container {
     width: 95%;
     max-width: 1400px;
     margin: 0 auto;
-}
-
-/* Clases de utilidad para Flexbox */
-.flex-between {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-.flex-start {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    overflow-x: auto; 
-    padding: 5px 0;
 }
 
 /* =========================================
@@ -55,6 +36,13 @@ body {
     background-color: #444444;
     padding: 15px 0;
     border-bottom: 2px solid #222;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .logo-box {
@@ -71,7 +59,6 @@ body {
     object-fit: contain;
 }
 
-/* Barra de Búsqueda */
 .search-box {
     flex-grow: 1;
     height: 45px;
@@ -98,14 +85,8 @@ body {
     cursor: pointer;
     color: #555;
     font-size: 1.1rem;
-    transition: background 0.3s;
 }
 
-.search-box button:hover {
-    background-color: #e0e0e0;
-}
-
-/* Botón de Inicio de Sesión */
 .social-box {
     width: 150px;
     height: 50px;
@@ -119,11 +100,6 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
-    transition: transform 0.2s;
-}
-
-.login-btn:hover {
-    transform: scale(1.05); 
 }
 
 .sesion-img {
@@ -134,7 +110,7 @@ body {
 }
 
 /* =========================================
-   3. NAVEGACIÓN (MENÚ STICKY)
+   3. NAVEGACIÓN (MENÚ)
    ========================================= */
 .main-nav {
     background-color: #333;
@@ -144,19 +120,29 @@ body {
     top: 0;
     z-index: 900; 
     box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    width: 100%;
+    overflow: hidden; /* Importante para el scroll interno */
 }
 
-a.nav-item-small {
-    text-decoration: none;
-    color: #333;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
+/* Contenedor flexible del menú */
+.flex-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto; /* Scroll horizontal */
+    padding: 5px 10px;
+    width: 100%;
+    /* Ocultar barra de scroll visualmente */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+}
+.flex-start::-webkit-scrollbar { 
+    display: none; /* Chrome/Safari */
 }
 
 .nav-item {
     height: 40px;
-    line-height: 40px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,15 +152,16 @@ a.nav-item-small {
     color: #333;
     white-space: nowrap;
     cursor: pointer;
-    transition: background 0.2s;
-    border: none;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    flex-shrink: 0; /* Evita que se aplasten */
 }
 
 .nav-item:hover {
     background-color: #f0f0f0;
 }
 
-/* Botones pequeños (Casita y Carrito) */
 .nav-item-small {
     width: 45px;
     height: 40px;
@@ -186,9 +173,12 @@ a.nav-item-small {
     cursor: pointer;
     border: none;
     position: relative; 
+    background-color: #fff;
+    border-radius: 4px;
+    flex-shrink: 0;
+    text-decoration: none;
 }
 
-/* Contador del carrito */
 .cart-badge {
     position: absolute;
     top: -5px;
@@ -206,7 +196,7 @@ a.nav-item-small {
 }
 
 /* =========================================
-   4. BANNER PRINCIPAL (CARRUSEL)
+   4. BANNER
    ========================================= */
 .banner-container {
     width: 100%;
@@ -233,7 +223,6 @@ a.nav-item-small {
     object-fit: cover; 
 }
 
-/* Botones de flecha */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -247,22 +236,15 @@ a.nav-item-small {
     cursor: pointer;
     font-size: 1.2rem;
     z-index: 10;
-    transition: background 0.3s;
 }
 
-.carousel-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.carousel-btn.prev { left: 15px; }
-.carousel-btn.next { right: 15px; }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
 
 /* =========================================
-   5. SECCIONES DE PRODUCTOS (GRILLA Y TARJETAS)
+   5. PRODUCTOS
    ========================================= */
-.product-section {
-    margin-bottom: 50px;
-}
+.product-section { margin-bottom: 50px; }
 
 .section-title {
     font-size: 1.2rem;
@@ -271,7 +253,6 @@ a.nav-item-small {
     margin-bottom: 20px;
     display: inline-block;
     border-bottom: 2px solid #d32f2f; 
-    background: transparent;
 }
 
 .product-grid {
@@ -287,12 +268,6 @@ a.nav-item-small {
     padding: 15px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.product-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
 }
 
 .product-image {
@@ -302,7 +277,6 @@ a.nav-item-small {
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
-    border: none;
     background: transparent;
 }
 
@@ -317,7 +291,6 @@ a.nav-item-small {
     color: #555;
     margin-bottom: 8px;
     text-align: center;
-    line-height: 1.3;
     height: 40px; 
     overflow: hidden;
 }
@@ -327,7 +300,6 @@ a.nav-item-small {
     font-weight: bold;
     font-size: 0.85rem;
     text-align: center;
-    margin-bottom: 5px;
 }
 
 .price {
@@ -337,7 +309,6 @@ a.nav-item-small {
     text-align: center;
     margin-bottom: 10px;
     border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
 }
 
 .brand {
@@ -365,26 +336,20 @@ a.nav-item-small {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-    transition: opacity 0.2s;
+    text-decoration: none;
 }
 
 .btn-red { background-color: #ff0000; }
-.btn-green { background-color: #1e7e34; } /* Verde más oscuro para contraste */
-
-.btn-red:hover, .btn-green:hover {
-    opacity: 0.85;
-}
+.btn-green { background-color: #1e7e34; }
 
 /* =========================================
-   6. PIE DE PÁGINA (FOOTER)
+   6. FOOTER (CORREGIDO)
    ========================================= */
 .main-footer {
     background-color: #f8f8f8;
     border-top: 1px solid #ddd;
     padding: 40px 0 0 0;
     margin-top: 40px;
-    position: relative;
 }
 
 .footer-grid {
@@ -400,62 +365,30 @@ a.nav-item-small {
     margin-bottom: 15px;
 }
 
-.num {
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: #d32f2f;
-    line-height: 1;
-}
+.num { font-size: 3.5rem; font-weight: 900; color: #d32f2f; }
+.txt { font-size: 2.5rem; font-weight: bold; color: #d32f2f; margin-left: 5px; }
 
-.txt {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #d32f2f;
-    margin-left: 5px;
-}
-
+/* Contenedor de la imagen de pagos */
 .payment-image-container {
     margin-bottom: 15px;
+    width: 100%;
     max-width: 250px;
+    display: block;
 }
 
 .payment-img {
     width: 100%;
     height: auto;
-    object-fit: contain;
     display: block;
+    object-fit: contain;
 }
 
-.ssl-text {
-    font-size: 0.8rem;
-    color: #444;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+.ssl-text { font-size: 0.8rem; color: #444; display: flex; align-items: center; gap: 5px; }
 
-.footer-col-2 h4, .footer-col-3 h4 {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.footer-col-2 ul, .footer-col-3 ul {
-    list-style: none;
-}
-
+.footer-col-2 h4, .footer-col-3 h4 { font-size: 1.1rem; margin-bottom: 15px; }
+.footer-col-2 ul, .footer-col-3 ul { list-style: none; }
 .footer-col-2 ul li, .footer-col-3 ul li {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.footer-col-2 ul li i {
-    color: #777;
-    font-size: 0.8rem;
+    font-size: 0.9rem; color: #555; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
 }
 
 .map-image-container {
@@ -464,6 +397,7 @@ a.nav-item-small {
     border-radius: 4px;
     overflow: hidden;
     height: 120px;
+    width: 100%;
 }
 
 .map-image-container img {
@@ -472,25 +406,7 @@ a.nav-item-small {
     object-fit: cover;
 }
 
-.footer-col-4 h5 {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.footer-col-4 p {
-    font-size: 0.85rem;
-    color: #555;
-    line-height: 1.4;
-    margin-bottom: 8px;
-}
-
-.contact-info {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: bold;
-}
+.contact-info { display: flex; align-items: center; gap: 5px; font-weight: bold; margin-bottom: 5px; }
 
 .footer-bottom {
     background-color: #f8f8f8;
@@ -499,16 +415,12 @@ a.nav-item-small {
     text-align: center;
 }
 
-.footer-bottom p {
-    font-size: 0.9rem;
-    color: #444;
-}
+.footer-bottom p { font-size: 0.9rem; color: #444; }
 
-/* Botón flotante de WhatsApp */
 .floating-whatsapp {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     background-color: #ff0000;
     color: white;
     width: 60px;
@@ -521,442 +433,66 @@ a.nav-item-small {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     text-decoration: none;
     z-index: 100;
-    transition: transform 0.2s;
-}
-
-.floating-whatsapp:hover {
-    transform: scale(1.1);
 }
 
 /* =========================================
-   7. POPUP MODAL LOGIN
+   7. MODAL Y CARRITO
    ========================================= */
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 2000; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0,0,0,0.6); 
-    align-items: center;
-    justify-content: center;
-}
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
+.modal-content { background-color: #fefefe; padding: 30px; border-radius: 10px; width: 90%; max-width: 400px; position: relative; }
+.close-btn { position: absolute; top: 10px; right: 20px; font-size: 28px; cursor: pointer; }
+.modal-content input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
 
-.modal-content {
-    background-color: #fefefe;
-    padding: 30px;
-    border: 1px solid #888;
-    width: 90%;
-    max-width: 400px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.close-btn {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-}
-
-.modal-content h2 {
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
-}
-
-.modal-content input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
+.carrito-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 380px; height: 100vh; background-color: #fff; z-index: 3000; display: flex; flex-direction: column; transition: right 0.3s ease-in-out; }
+.carrito-panel.abierto { right: 0; }
+.carrito-header { display: flex; justify-content: space-between; padding: 20px; background-color: #333; color: white; }
+.carrito-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
+.carrito-item { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 10px 0; }
+.carrito-footer { padding: 20px; background-color: #f9f9f9; }
+.carrito-total { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; }
+.btn-whatsapp-carrito { width: 100%; background-color: #1e7e34; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.carrito-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.5); z-index: 2500; opacity: 0; visibility: hidden; transition: 0.3s; }
+.carrito-overlay.activo { opacity: 1; visibility: visible; }
 
 /* =========================================
-   8. ESTILOS DEL CARRITO (OFFCANVAS)
+   8. DETALLE PRODUCTO
    ========================================= */
-.carrito-panel {
-    position: fixed;
-    top: 0;
-    right: -400px; 
-    width: 100%;
-    max-width: 380px;
-    height: 100vh;
-    background-color: #fff;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    z-index: 3000;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.3s ease-in-out; 
-}
-
-.carrito-panel.abierto {
-    right: 0;
-}
-
-.carrito-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-}
-
-.carrito-header h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.cerrar-carrito {
-    font-size: 2rem;
-    cursor: pointer;
-    line-height: 1;
-}
-
-.carrito-items {
-    flex-grow: 1;
-    overflow-y: auto; 
-    padding: 20px;
-}
-
-.carrito-vacio {
-    text-align: center;
-    color: #777;
-    margin-top: 20px;
-}
-
-.carrito-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding: 10px 0;
-}
-
-.item-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.item-nombre {
-    font-weight: bold;
-    color: #333;
-    font-size: 0.95rem;
-}
-
-.item-precio {
-    color: #777;
-    font-size: 0.8rem;
-}
-
-.item-acciones {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.item-subtotal {
-    font-weight: bold;
-    color: #333;
-}
-
-.btn-eliminar {
-    min-width: 44px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-eliminar:hover {
-    transform: scale(1.2);
-}
-
-.carrito-footer {
-    padding: 20px;
-    border-top: 1px solid #eee;
-    background-color: #f9f9f9;
-}
-
-.carrito-total {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.btn-whatsapp-carrito {
-    width: 100%;
-    background-color: #1e7e34;
-    color: white;
-    border: none;
-    padding: 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: background 0.3s;
-}
-
-.btn-whatsapp-carrito:hover {
-    background-color: #1a6228;
-}
-
-.carrito-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2500; 
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.carrito-overlay.activo {
-    opacity: 1;
-    visibility: visible;
-}
+.detalle-producto { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; }
+.galeria-producto { flex: 1; min-width: 300px; max-width: 600px; }
+.galeria-principal { width: 100%; height: auto; border-radius: 8px; border: 1px solid #eee; margin-bottom: 15px; }
+.galeria-miniaturas { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.miniatura { width: 80px; height: 80px; object-fit: contain; border: 2px solid #ddd; border-radius: 4px; cursor: pointer; }
+.info-producto { flex: 1; min-width: 300px; }
+.detalle-titulo { font-size: 2rem; margin-bottom: 15px; }
+.detalle-precio { font-size: 1.8rem; margin-bottom: 15px; }
+.badge-vendidos { background: #fff3e0; color: #e65100; padding: 5px 10px; border-radius: 4px; display: inline-block; margin-bottom: 20px; }
+.detalle-acciones { display: flex; gap: 10px; margin-bottom: 30px; }
+.btn-grande { padding: 10px 30px; font-size: 1rem; flex: 1; }
+.imagen-descripcion { width: 100%; max-width: 1300px; height: auto; border-radius: 8px; display: block; margin: 0 auto; }
+.tabla-especificaciones { width: 100%; border-collapse: collapse; }
+.tabla-especificaciones td { padding: 12px; border: 1px solid #eee; }
+.tabla-especificaciones tr:nth-child(odd) { background: #f9f9f9; }
 
 /* =========================================
-   9. ESTILOS DETALLE DEL PRODUCTO
-   ========================================= */
-.btn-volver {
-    margin-bottom: 20px;
-    cursor: pointer;
-    padding: 8px 15px;
-    border: 1px solid #ccc;
-    background: #fff;
-    border-radius: 4px;
-    font-family: inherit;
-}
-
-.btn-volver:hover {
-    background-color: #f0f0f0;
-}
-
-.detalle-producto {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-}
-
-.galeria-producto {
-    flex: 1;
-    min-width: 300px;
-    max-width: 600px;
-}
-
-.galeria-principal {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    border-radius: 8px;
-    border: 1px solid #eee;
-    margin-bottom: 15px;
-}
-
-.galeria-miniaturas {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap; 
-}
-
-.miniatura {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 5px;
-    transition: border-color 0.2s;
-}
-
-.miniatura:hover {
-    border-color: #d32f2f;
-}
-
-.info-producto {
-    flex: 1;
-    min-width: 300px;
-}
-
-.detalle-titulo {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 15px;
-    font-weight: 500;
-}
-
-.detalle-separador {
-    border: 0;
-    border-top: 1px solid #ddd;
-    margin-bottom: 15px;
-}
-
-.detalle-precio {
-    font-size: 1.8rem;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.badge-vendidos {
-    background: #fff3e0;
-    color: #e65100;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.detalle-descripcion {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.detalle-color {
-    background: #e9ecef;
-    padding: 10px;
-    font-size: 0.9rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.detalle-stock {
-    color: #1e7e34;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-.detalle-acciones {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-}
-
-.btn-grande {
-    padding: 10px 30px;
-    font-size: 1rem;
-    flex: 1; 
-}
-
-.detalle-lista {
-    list-style: none;
-    padding: 0;
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 2;
-}
-
-.detalle-descripcion-extra {
-    margin-top: 40px;
-}
-
-.detalle-subtitulo {
-    color: #d32f2f;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-}
-
-.imagen-descripcion {
-    width: 100%;
-    max-width: 1300px;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #eee;
-    display: block;
-    margin: 0 auto;
-}
-
-.tabla-especificaciones {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.tabla-especificaciones td {
-    padding: 12px;
-    border: 1px solid #eee;
-}
-
-.tabla-especificaciones tr:nth-child(odd) {
-    background: #f9f9f9;
-}
-
-.tabla-especificaciones td:first-child {
-    font-weight: bold;
-    width: 50%;
-}
-
-
-/* =========================================
-   10. RESPONSIVE (DISEÑO ADAPTABLE) - CORREGIDO
+   9. RESPONSIVE (AQUÍ ESTÁ LA MAGIA)
    ========================================= */
 
-/* Tablets y pantallas medianas */
+/* Tablets */
 @media (max-width: 992px) {
-    .product-grid { grid-template-columns: repeat(3, 1fr); }
     .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* Dispositivos móviles y tablets en vertical */
+/* Móviles (El fix principal) */
 @media (max-width: 768px) {
-    /* --- HEADER --- */
+    /* 1. Arreglar Header */
     .top-header .flex-between {
         flex-wrap: wrap; 
         justify-content: center;
-        gap: 10px;
-    }
-
-    .logo-box {
-        width: auto;
-        height: 50px;
     }
     
-    .social-box {
-        width: auto;
-    }
-
-    /* Barra de búsqueda ocupa todo el ancho debajo */
+    .logo-box { width: 150px; height: 50px; }
+    .social-box { width: auto; }
+    
     .search-box { 
         order: 3; 
         width: 100%; 
@@ -964,127 +500,67 @@ a.nav-item-small {
         margin-top: 10px; 
     }
 
-    /* --- NAVEGACIÓN (SCROLL HORIZONTAL) --- */
-    .main-nav {
-        padding: 10px 0;
-    }
-    
-    .main-nav .flex-start {
-        flex-wrap: nowrap; /* Evita que salten de línea */
+    /* 2. Arreglar Navegación (Scroll horizontal) */
+    .main-nav { padding: 8px 0; }
+    .flex-start { 
+        flex-wrap: nowrap; /* NO saltar de línea */
         justify-content: flex-start;
-        -webkit-overflow-scrolling: touch; /* Scroll suave en iOS */
-        padding-bottom: 5px;
-        scrollbar-width: none; /* Oculta barra en Firefox */
+        padding: 0 10px;
     }
-    
-    .main-nav .flex-start::-webkit-scrollbar {
-        display: none; /* Oculta barra en Chrome/Safari */
-    }
+    .nav-item { flex-shrink: 0; font-size: 0.8rem; padding: 0 10px; }
+    .nav-item-small { flex-shrink: 0; }
 
-    .nav-item {
-        flex-shrink: 0; /* Evita que los botones se aplasten */
-        font-size: 0.85rem;
-        padding: 0 12px;
-    }
+    /* 3. Arreglar Banner */
+    .banner-container { height: 200px; }
 
-    /* --- BANNER --- */
-    .banner-container { 
-        height: 250px; 
-    }
-    
-    .carousel-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-    }
-
-    /* --- FOOTER --- */
+    /* 4. Arreglar Footer (El desastre de los logos) */
     .footer-grid { 
         grid-template-columns: 1fr; 
         text-align: center;
+        gap: 20px;
     }
-
-    .footer-logo, .footer-col-2 ul li, .footer-col-3 ul li, .contact-info {
+    
+    /* Centrar todo en el footer */
+    .footer-logo, 
+    .footer-col-2 ul li, 
+    .footer-col-3 ul li, 
+    .contact-info,
+    .ssl-text {
         justify-content: center;
     }
 
+    /* LIMITAR EL TAMAÑO DE LOS LOGOS DE PAGO */
     .payment-image-container {
         margin: 0 auto 15px auto;
-        max-width: 280px;
+        max-width: 200px; /* Tamaño máximo en móvil */
     }
 
+    /* LIMITAR EL MAPA */
     .map-image-container {
-        max-width: 100%;
-        height: 180px;
+        height: 150px;
     }
 
-    /* --- DETALLE PRODUCTO --- */
-    .detalle-producto { gap: 20px; }
-    .imagen-descripcion { height: 300px; }
-}
-
-/* Celulares pequeños */
-@media (max-width: 600px) {
-    /* --- PRODUCTOS (2 Columnas) --- */
-    .product-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; 
-        gap: 10px; 
-    }
-
-    .product-card {
-        padding: 10px;
-    }
-
-    .product-image {
-        height: 140px; 
-    }
-
-    .product-name {
-        font-size: 0.8rem;
-        height: auto; 
-    }
-
-    .price {
-        font-size: 1.1rem;
-    }
-
-    /* Botones de compra apilados si no caben */
-    .action-buttons {
-        flex-direction: column; 
-        gap: 5px;
-    }
-    
-    .btn-red, .btn-green {
-        font-size: 0.75rem;
-        padding: 8px 2px;
-    }
-
-    /* --- GENERAL --- */
-    .section-title { font-size: 1rem; }
-    .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; }
-
-    /* --- DETALLE PRODUCTO --- */
+    /* 5. Arreglar Detalle Producto */
     .detalle-producto { flex-direction: column; gap: 20px; }
     .detalle-titulo { font-size: 1.5rem; text-align: center; }
-    .detalle-precio { font-size: 1.4rem; text-align: center; }
-    
-    .badge-vendidos {
-        display: block;
-        width: fit-content;
-        margin: 0 auto 15px auto;
+    .detalle-precio { font-size: 1.5rem; text-align: center; }
+    .detalle-acciones { flex-direction: column; }
+    .btn-grande { width: 100%; }
+}
+
+/* Celulares Pequeños */
+@media (max-width: 600px) {
+    /* Forzar 2 columnas en productos */
+    .product-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
     }
     
-    .imagen-descripcion { 
-        height: auto; 
-        aspect-ratio: 1 / 1; 
-        object-fit: contain; 
-    }
+    .product-card { padding: 10px; }
+    .product-image { height: 120px; }
     
-    .detalle-acciones {
-        flex-direction: column;
-    }
+    /* Apilar botones de compra */
+    .action-buttons { flex-direction: column; gap: 5px; }
     
-    .btn-grande {
-        width: 100%;
-    }
+    .floating-whatsapp { width: 50px; height: 50px; font-size: 1.5rem; bottom: 15px; right: 15px; }
 }
