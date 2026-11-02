@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ottoman Empire - Muebles de oficina y hogar de alta calidad. Escritorios, sillas, mesas y más. Envíos a toda Bolivia.">
+    <title>Ottoman Empire</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body id="inicio">
+
+    <!-- ENCABEZADO -->
+    <header class="top-header">
+        <div class="container flex-between">
+            <div class="logo-box">
+                <img src="Logo.webp" alt="ottoman empire" class="logo-img" width="220" height="60">
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar...">
+                <button type="submit" aria-label="Buscar productos"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="social-box">
+                <button id="openLoginBtn" class="login-btn">
+                    <img src="sesion.png" alt="Iniciar sesión" class="sesion-img" width="150" height="50">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="main-nav">
+        <div class="container flex-start">
+            <a href="#/inicio" class="nav-item-small box" title="Ir al inicio"><i class="fa-solid fa-house"></i></a>
+            
+            <div class="nav-item box" onclick="irA('/comodas')">Comodas</div>
+            <div class="nav-item box" onclick="irA('/escritorios')">Escritorios</div>
+            <div class="nav-item box" onclick="irA('/estanterias')">Estanterias</div>
+            <div class="nav-item box" onclick="irA('/mesas')">Mesas</div>
+            <div class="nav-item box" onclick="irA('/sillas')">Sillas</div>
+            <div class="nav-item box" onclick="irA('/zapateros')">Zapateros</div>
+            <div class="nav-item box" onclick="irA('/roperos')">Roperos</div>
+            <div class="nav-item box" onclick="irA('/jardineria')">Jardineria</div>
+            
+            <div class="nav-item-small box" id="cartIcon" onclick="abrirCarrito()" style="cursor: pointer;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cartCount" class="cart-badge">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        <!-- SECCIÓN INICIO -->
+        <div id="seccion-inicio" class="seccion-contenido" style="display: none;">
+            <section class="banner-container box">
+                <button class="carousel-btn prev" onclick="moveSlide(-1)" aria-label="Anterior diapositiva"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="carousel-slide active"><img src="banner.webp" alt="Banner principal de Ottoman Empire con una mesa y sillas modernas en una sala elegante" fetchpriority="high" width="1200" height="400"></div>                <div class="carousel-slide"><img src="banner2.webp" alt="Banner promocional con muebles modernos y una mesa de comedor en tonos claros"></div>
+                <div class="carousel-slide"><img src="banner3.webp" alt="Banner promocional con un ambiente contemporáneo de sala de estar y muebles de diseño"></div>
+                <button class="carousel-btn next" onclick="moveSlide(1)" aria-label="Siguiente diapositiva"><i class="fa-solid fa-chevron-right"></i></button>
+            </section>
+
+            <section class="product-section">
+                <div class="section-title">NOVEDADES</div>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="box product-image"><img src="295793-220-220.webp" alt="Joyero de madera con estilo clásico y acabado claro en exhibición"></div>
+                        <div class="product-name">Joyero</div>
+                        <div class="stock">En Stock</div>
+                        <div class="price">500 Bs</div>
+                        <div class="brand">Bald</div>
+                        <div class="action-buttons">
+                            <button class="btn-red" onclick="agregarAlCarrito('Joyero', 500)">Comprar</button>
+                            <a href="https://wa.me/59169268423?text=Hola,%20estoy%20interesado%20en%20el%20producto:%20*Joyero*%20de%20la%20marca%20Bald%20que%20cuesta%20500%20Bs." target="_blank" class="btn-green" style="text-decoration: none;">
+                                <i class="fa-brands fa-whatsapp"></i>Whatsapp
+                            </a>
+                        </div>
+                    </div>
+                    <!--  Añadir más productos  -->
+                </div>
+            </section>
+        </div>
+
+        <!-- SECCIÓN MESAS -->
+        <div id="seccion-mesas" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Mesas</div>
+            <div class="product-grid" style="margin-bottom: 50px;">
+                
+                <!-- Producto 1 (Cougar) -->
+                <div class="product-card">
+                    <!-- Ahora redirige usando el Router -->
+                    <div class="box product-image" onclick="irA('/producto/cougar')" style="cursor: pointer;">
+                        <img src="Cougar1.webp" alt="Mesa de trabajo Cougar E-GRAV 160 con superficie gris y estructura blanca ajustable">
+                    </div>
+                    <div class="product-name" onclick="irA('/producto/cougar')" style="cursor: pointer;">Mesa Cougar E-GRAV 160</div>
+                    <div class="stock">Hay existencias</div>
+                    <div class="price">4.154 Bs.</div>
+                    <div class="brand">Marca: Cougar</div>
+                    <div class="action-buttons">
+                        <button class="btn-red" onclick="agregarAlCarrito('Mesa Cougar E-GRAV', 4154)" aria-label="Agregar al carrito">Comprar</button>
+                        <a href="https://wa.me/59169268423?text=Hola,%20estoy%20interesado%20en%20la%20*Mesa%20Cougar%20E-GRAV%20160*%20que%20cuesta%204.154%20Bs." target="_blank" class="btn-green" style="text-decoration: none;" aria-label="Contactar por WhatsApp             
+                        ">
+                            <i class="fa-brands fa-whatsapp"></i>Whatsapp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Añadir más productos de mesas aquí -->
+                
+            </div>
+        </div>
+
+        <!-- SECCIÓN DETALLE DEL PRODUCTO (CON CLASES) -->
+        <div id="seccion-detalle-cougar" class="seccion-contenido" style="display: none;">
+            
+            <button onclick="irA('/mesas')" class="btn-volver">
+                <i class="fa-solid fa-arrow-left"></i> Volver a Mesas
+            </button>
+            
+            <div class="detalle-producto">         
+                <!-- Galería de Imágenes -->
+                <div class="galeria-producto">
+                    <img id="imagenPrincipal" src="Cougar1.webp" alt="Vista frontal de la mesa Cougar E-GRAV 160 con estructura blanca y superficie gris en un ambiente moderno" class="galeria-principal">
+                    <div class="galeria-miniaturas">
+                        <img src="Cougar1.webp" alt="Vista frontal de la mesa Cougar E-GRAV 160" onclick="cambiarImagen(this.src)" class="miniatura">
+                        <img src="Cougar2.webp" alt="Vista lateral de la mesa Cougar E-GRAV 160" onclick="cambiarImagen(this.src)" class="miniatura">
+                        <img src="Cougar3.webp" alt="Detalle de la estructura ajustable de la mesa Cougar E-GRAV 160" onclick="cambiarImagen(this.src)" class="miniatura">
+                    </div>
+                </div>
+                
+                <!-- Info y Compra -->
+                <div class="info-producto">
+                    <h1 class="detalle-titulo">Cougar E-GRAV 160 – Mesa con Altura Ajustable Eléctricamente</h1>
+                    <hr class="detalle-separador">
+                    <h2 class="detalle-precio">4.154 Bs.</h2>
+                    
+                    <span class="badge-vendidos">🔥 En total 7 vendidos</span>
+
+                    <p class="detalle-descripcion">
+                        El escritorio eléctrico gaming E-Grav es la combinación de nuestra mayor dimensión de escritorio con un diseño elegante: perfecto para juegos, creatividad y trabajo.
+                    </p>
+
+                    <div class="detalle-color">
+                        Color : <strong>Blanco</strong>
+                    </div>
+
+                    <p class="detalle-stock">Hay existencias</p>
+
+                    <div class="detalle-acciones">
+                        <button class="btn-red btn-grande" onclick="agregarAlCarrito('Mesa Cougar E-GRAV', 4154)">Comprar</button>
+                        <a href="https://wa.me/59169268423?text=Hola,%20estoy%20interesado%20en%20la%20*Mesa%20Cougar%20E-GRAV%20160*%20que%20cuesta%204.154%20Bs." target="_blank" class="btn-green btn-grande" style="text-decoration: none;">
+                            <i class="fa-brands fa-whatsapp"></i> Pedir por
+                        </a>
+                    </div>
+
+                    <ul class="detalle-lista">
+                        <li><strong>Marca:</strong> Cougar</li>
+                        <li><strong>Categoría:</strong> Mesa</li>
+                        <li><strong>Estado:</strong> Nuevo</li>
+                        <li><strong>Garantía:</strong> 3 Meses</li>
+                        <li><strong>Envíos:</strong> A toda Bolivia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Descripción Extra -->
+            <div class="detalle-descripcion-extra">
+                <h3 class="detalle-subtitulo">Descripción</h3>
+                <img src="Cougar4.webp" alt="Mesa Cougar E-GRAV en un espacio de oficina moderno con tonos claros y diseño elegante" class="imagen-descripcion">
+            </div>
+            
+            <!-- Tabla Técnica -->
+            <div class="detalle-descripcion-extra">
+                <h3 class="detalle-subtitulo">Especificaciones Técnicas</h3>
+                <table class="tabla-especificaciones">
+                    <tbody>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>E-GRAV 160 Electric Gaming Desk</td>
+                        </tr>
+                        <tr>
+                            <td>Dimensiones de la Mesa</td>
+                            <td>1600 x 750 x 15 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Requerimiento de Voltaje</td>
+                            <td>100~240Vac</td>
+                        </tr>
+                        <tr>
+                            <td>Rango de Altura de la Mesa</td>
+                            <td>730~1180 mm</td>
+                        </tr>
+                        <tr>
+                            <td>Alfombrilla Completa para Mesa</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>Capacidad Total de Peso de la Mesa</td>
+                            <td>120 kg</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- Fin Detalle -->
+
+        <!-- OTRAS SECCIONES (Placeholders) -->
+        <div id="seccion-comodas" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Comodas</div>
+            <p style="padding: 20px; color: #444;">Productos de Cómodas próximamente.</p>
+        </div>
+        <div id="seccion-escritorios" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Escritorios</div>
+            <p style="padding: 20px; color: #444;">Productos de Escritorios próximamente.</p>
+        </div>
+        <div id="seccion-estanterias" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Estanterías</div>
+            <p style="padding: 20px; color: #444;">Productos de Estanterías próximamente.</p>
+        </div>
+
+        <div id="seccion-sillas" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Sillas</div>
+            <p style="padding: 20px; color: #444;">Productos de Sillas próximamente.</p>
+        </div>
+
+        <div id="seccion-zapateros" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Zapateros</div>
+            <p style="padding: 20px; color: #444;">Productos de Zapateros próximamente.</p>
+        </div>
+
+        <div id="seccion-roperos" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Roperos</div>
+            <p style="padding: 20px; color: #444;">Productos de Roperos próximamente.</p>
+        </div>
+        <div id="seccion-jardineria" class="seccion-contenido" style="display: none;">
+            <div class="section-title" style="margin-top: 20px;">Jardinería</div>
+            <p style="padding: 20px; color: #444;">Productos de Jardinería próximamente.</p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col-1">
+                <div class="footer-logo"><span class="num">100</span><span class="txt">años</span></div>
+                <img src="pagos.webp" alt="Pagos" class="payment-img" width="250" height="50">
+                <p class="ssl-text"><i class="fa-solid fa-shield-halved"></i> Sitio Seguro</p>
+            </div>
+            <div class="footer-col-2">
+                <h4> Secciones</h4>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> Compra por mayor</li>
+                    <li><i class="fa-solid fa-check"></i> Garantia</li>
+                    <li><i class="fa-solid fa-check"></i> Noticias</li>
+                </ul>
+            </div>
+            <div class="footer-col-3">
+                <h4>Sobre Nosotros</h4>
+                <ul>
+                    <li>Staff</li>
+                    <li>Contacto</li>
+                    <li>Historia</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <div class="map-image-container"><img src="mapa.jpg" alt="Mapa de Bolivia con la ubicación de la empresa y puntos de contacto" style="width: 100%; height: auto; display: block;"></div>
+                <h5>Contacto</h5>
+                <p>Llamadas al Whatsapp</p>
+                <p class="contact-info"><i class="fa-brands fa-whatsapp"></i>69268423</p>
+                <p class="contact-info"><i class="fa-brands fa-whatsapp"></i>69266771</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Ottoman Empire © 1926 - 2026 Todos los derechos reservados - Diseñado por Zuny's Team</p>
+        </div>
+        <a href="https://wa.me/59169268423?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Ottoman%20Empire%20y%20quisiera%20hacer%20una%20consulta." target="_blank" class="floating-whatsapp" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </footer>
+
+    <!-- MODAL LOGIN -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Iniciar sesión</h2>
+            <form>
+                <input type="text" placeholder="Usuario" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit" class="btn-red" style="width: 100%; margin-top: 10px;">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CARRITO -->
+    <div id="carritoPanel" class="carrito-panel">
+        <div class="carrito-header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h3>
+            <span class="cerrar-carrito" onclick="cerrarCarrito()">&times;</span>
+        </div>
+        <div id="carritoItems" class="carrito-items">
+            <p class="carrito-vacio">El carrito está vacío.</p>
+        </div>
+        <div class="carrito-footer">
+            <div class="carrito-total"><span>Total:</span><span id="carritoTotal">0 Bs</span></div>
+            <button class="btn-whatsapp-carrito" onclick="enviarPedidoWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+            </button>
+        </div>
+    </div>
+    <div id="carritoOverlay" class="carrito-overlay" onclick="cerrarCarrito()"></div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // ==========================================
+        // 1. ROUTER SPA NATIVO (HISTORY API)
+        // ==========================================
+        
+        // Función que mapea la ruta a la vista correcta
+        function renderizarRuta() {
+            // Obtenemos el hash de la URL (ej. "#/mesas")
+            let hash = window.location.hash || '#/inicio';
+            
+            // Limpiamos el hash para quedarnos con la ruta limpia (ej. "/mesas")
+            let ruta = hash.replace('#', ''); 
+
+            // Ocultamos todas las secciones por defecto
+            document.querySelectorAll('.seccion-contenido').forEach(sec => sec.style.display = 'none');
+
+            // Lógica de enrutamiento
+            if (ruta === '/inicio' || ruta === '/') {
+                document.getElementById('seccion-inicio').style.display = 'block';
+            } else if (ruta === '/mesas') {
+                document.getElementById('seccion-mesas').style.display = 'block';
+            } else if (ruta === '/producto/cougar') {
+                document.getElementById('seccion-detalle-cougar').style.display = 'block';
+            } else if (ruta === '/comodas') {
+                document.getElementById('seccion-comodas').style.display = 'block';
+            } else if (ruta === '/escritorios') {
+                document.getElementById('seccion-escritorios').style.display = 'block';
+            } else if (ruta === '/estanterias') {
+                document.getElementById('seccion-estanterias').style.display = 'block';
+            } else if (ruta === '/sillas') {
+                document.getElementById('seccion-sillas').style.display = 'block';
+            } else if (ruta === '/zapateros') {
+                document.getElementById('seccion-zapateros').style.display = 'block';
+            } else if (ruta === '/roperos') {
+                document.getElementById('seccion-roperos').style.display = 'block';
+            } else if (ruta === '/jardineria') {
+                document.getElementById('seccion-jardineria').style.display = 'block';
+            } else {
+                // Si la ruta no existe, va al inicio
+                document.getElementById('seccion-inicio').style.display = 'block';
+            }
+
+            // Hacemos scroll hacia arriba al cambiar de vista
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Función para navegar (llaman alos botones)
+        function irA(ruta) {
+            // Agrega la ruta al historial del navegador sin recargar
+            history.pushState({}, '', '#' + ruta);
+            // Renderiza la nueva vista
+            renderizarRuta();
+        }
+
+        // Escuchamos el botón "Atrás" y "Adelante" del navegador
+        window.addEventListener('popstate', renderizarRuta);
+        
+        // Si el usuario recarga la página, renderizamos la ruta actual
+        window.addEventListener('DOMContentLoaded', renderizarRuta);
+
+
+        // ==========================================
+        // 2. LÓGICA DEL CARRITO Y COMPONENTES
+        // ==========================================
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) slide.classList.add('active');
+            });
+        }
+        function moveSlide(n) {
+            currentSlide += n;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            showSlide(currentSlide);
+        }
+        if(slides.length > 0) setInterval(() => { moveSlide(1); }, 4000);
+
+        // Modal Login
+        const modal = document.getElementById("loginModal");
+        const btn = document.getElementById("openLoginBtn");
+        const span = document.getElementsByClassName("close-btn")[0];
+        btn.onclick = function() { modal.style.display = "flex"; }
+        span.onclick = function() { modal.style.display = "none"; }
+        window.onclick = function(event) { if (event.target == modal) modal.style.display = "none"; }
+
+        // Galería
+        function cambiarImagen(rutaImagen) {
+            document.getElementById('imagenPrincipal').src = rutaImagen;
+        }
+
+        // Carrito
+        let carrito = [];
+        function agregarAlCarrito(nombre, precio) {
+            const itemExistente = carrito.find(item => item.nombre === nombre);
+            if (itemExistente) { itemExistente.cantidad++; } 
+            else { carrito.push({ nombre: nombre, precio: precio, cantidad: 1 }); }
+            actualizarCarrito();
+            abrirCarrito();
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const contenedor = document.getElementById('carritoItems');
+            const totalElemento = document.getElementById('carritoTotal');
+            const contador = document.getElementById('cartCount');
+            contenedor.innerHTML = '';
+            let total = 0, totalItems = 0;
+
+            if (carrito.length === 0) {
+                contenedor.innerHTML = '<p class="carrito-vacio">El carrito está vacío.</p>';
+            } else {
+                carrito.forEach((item, index) => {
+                    const subtotal = item.precio * item.cantidad;
+                    total += subtotal;
+                    totalItems += item.cantidad;
+                    contenedor.innerHTML += `
+                        <div class="carrito-item">
+                            <div class="item-info">
+                                <span class="item-nombre">${item.nombre}</span>
+                                <span class="item-precio">${item.precio} Bs x ${item.cantidad}</span>
+                            </div>
+                            <div class="item-acciones">
+                                <span class="item-subtotal">${subtotal} Bs</span>
+                                <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>`;
+                });
+            }
+            totalElemento.textContent = total + ' Bs';
+            contador.textContent = totalItems;
+        }
+
+        function abrirCarrito() {
+            document.getElementById('carritoPanel').classList.add('abierto');
+            document.getElementById('carritoOverlay').classList.add('activo');
+        }
+        function cerrarCarrito() {
+            document.getElementById('carritoPanel').classList.remove('abierto');
+            document.getElementById('carritoOverlay').classList.remove('activo');
+        }
+
+        function enviarPedidoWhatsApp() {
+            if (carrito.length === 0) { alert("Tu carrito está vacío."); return; }
+            let mensaje = "¡Hola! Me interesa hacer el siguiente pedido:%0A%0A";
+            let total = 0;
+            carrito.forEach(item => {
+                const subtotal = item.precio * item.cantidad;
+                mensaje += `- ${item.cantidad}x ${item.nombre} (${subtotal} Bs)%0A`;
+                total += subtotal;
+            });
+            mensaje += `%0A*Total: ${total} Bs*`;
+            window.open(`https://wa.me/59169268423?text=${mensaje}`, '_blank');
+        }
+    </script>
+</body>
+</html>
